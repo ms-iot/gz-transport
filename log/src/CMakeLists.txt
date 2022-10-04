@@ -5,7 +5,8 @@ list(APPEND sources cmd/LogCommandAPI.cc)
 ign_add_component(log SOURCES ${sources} GET_TARGET_NAME log_lib_target)
 
 target_link_libraries(${log_lib_target}
-  PRIVATE SQLite3::SQLite3)
+  PRIVATE ${SQLite3_LIBRARIES})
+set_target_properties(${log_lib_target} PROPERTIES MAP_IMPORTED_CONFIG_RELWITHDEBINFO RELEASE)
 
 if (MSVC)
   # Warning #4251 is the "dll-interface" warning that tells you when types used
